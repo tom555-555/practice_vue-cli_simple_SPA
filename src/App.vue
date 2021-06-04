@@ -1,19 +1,34 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <myheader></myheader>
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <p v-if="msg.length > 0">
+      {{ msg }}
+    </p>
+    <p v-else>no text</p>
+    <input type="text" v-model="msg" />
+    <button @click="clear()">clear</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import myheader from "./components/myheader.vue";
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    myheader,
+  },
+  data() {
+    return {
+      msg: "Hello folks",
+    };
+  },
+  methods: {
+    clear() {
+      this.msg = " ";
+    },
+  },
+};
 </script>
 
 <style>
